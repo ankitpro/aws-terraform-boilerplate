@@ -1,0 +1,24 @@
+{
+    "schemaVersion": "2.2",
+    "description": "Drain and Deregister Node",
+    "parameters": {
+      "NodeName": {
+        "type": "String",
+        "description": "Description for the SSM Document"
+      }
+    },
+    "mainSteps": [
+      {
+        "action": "aws:runShellScript",
+        "name": "DeregisterNode",
+        "inputs": {
+          "timeoutSeconds": "120",
+          "runCommand": [
+            "#!/bin/bash",
+            "su ec2-user -c /home/ec2-user/start_service"
+          ]
+        }
+      }
+    ]
+  }
+  
